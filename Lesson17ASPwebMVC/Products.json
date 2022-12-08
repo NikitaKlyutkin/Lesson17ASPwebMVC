@@ -1,0 +1,17 @@
+[
+    {
+        "_name": "Apple",
+        "_quantity": 4,
+        "_price": 5
+    },
+    {
+        "_name": "Mac",
+        "_quantity": 5,
+        "_price": 500
+    },
+    {
+        "_name": "Сleaner",
+        "_quantity": 7,
+        "_price": 50
+    }
+  ]
