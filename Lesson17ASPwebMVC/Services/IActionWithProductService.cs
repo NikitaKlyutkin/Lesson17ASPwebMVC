@@ -7,9 +7,12 @@ namespace Lesson17ASPwebMVC.Services
     {
         public void AddProduct(Product product);
 
-        public List<Product> GetAllProducts();
+        public void DelProduct(string name);
 
-        public void ReplaceProduct(int idProduct, Product product);
+        public List<Product> GetAllProducts();
+        public Product GetProductByName(string name);
+
+        public void ReplaceProduct(Product product);
         public decimal SummAllProducts();
     }
 }

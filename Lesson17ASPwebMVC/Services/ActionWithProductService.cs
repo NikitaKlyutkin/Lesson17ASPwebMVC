@@ -1,6 +1,7 @@
 ﻿using Lesson17ASPwebMVC.Models.Domain;
 using Lesson17ASPwebMVC.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Lesson17ASPwebMVC.Services
 {
@@ -18,14 +19,26 @@ namespace Lesson17ASPwebMVC.Services
             _inventory.products.Add(product);
         }
 
+        public void DelProduct(string name)
+        {
+            var IndexOf = _inventory.products.FindIndex(x => x._name == name);
+            _inventory.products.RemoveAt(IndexOf);
+        }
+
 
         public List<Product> GetAllProducts()
         {
             return _inventory.products;
         }
 
-        public void ReplaceProduct(int idProduct, Product product)
+        public Product GetProductByName(string name)
         {
+           return _inventory.products.Single(x => x._name == name);
+        }
+
+        public void ReplaceProduct(Product product)
+        {
+            var idProduct = _inventory.products.FindIndex(x => x._name == product._name);
             _inventory.products[idProduct] = product;
         }
 

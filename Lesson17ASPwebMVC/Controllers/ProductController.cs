@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson17ASPwebMVC.Controllers
 {
-    [ApiController]
+    [Controller]
     [Route("[controller]/[action]")]
     public class ProductController : Controller
     {
@@ -22,9 +22,9 @@ namespace Lesson17ASPwebMVC.Controllers
         }
 
         [HttpPut]
-        public IActionResult ReplaceProduct(int idProduct, Product product)
+        public IActionResult ReplaceProduct(Product product)
         {
-            action.ReplaceProduct(idProduct, product);
+            action.ReplaceProduct(product);
             return Created($"Replace {product._name}", product);
         }
 
@@ -50,7 +50,25 @@ namespace Lesson17ASPwebMVC.Controllers
         public IActionResult Create(Product product)
         {
             action.AddProduct(product);
-            return View();
+            return RedirectToAction("GetAllProduct");
+        }
+
+        public IActionResult Edit(string id)
+        {
+            var modelToUpdate= action.GetProductByName(id);
+            return View(modelToUpdate);
+        }
+        [HttpPost]
+        public IActionResult EditPost(Product id)
+        {
+            action.ReplaceProduct(id);
+            return RedirectToAction("GetAllProduct");
+        }
+
+        public IActionResult Delete(string id)
+        {
+            action.DelProduct(id);
+            return RedirectToAction("GetAllProduct");
         }
     }
 }
