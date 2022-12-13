@@ -1,10 +1,12 @@
-﻿using Lesson17ASPwebMVC.Models.Domain;
+﻿using Lesson17ASPwebMVC.CustomFilter;
+using Lesson17ASPwebMVC.Models.Domain;
 using Lesson17ASPwebMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson17ASPwebMVC.Controllers
 {
     [Controller]
+    [CustomExceptionFilter]
     [Route("[controller]/[action]")]
     public class ProductController : Controller
     {
