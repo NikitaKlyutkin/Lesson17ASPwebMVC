@@ -1,12 +1,11 @@
-﻿using Lesson17ASPwebMVC.CustomFilter;
-using Lesson17ASPwebMVC.Models.Domain;
+﻿using Lesson17ASPwebMVC.Models.Domain;
 using Lesson17ASPwebMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson17ASPwebMVC.Controllers
 {
     [Controller]
-    [CustomExceptionFilter]
+    
     [Route("[controller]/[action]")]
     public class ProductController : Controller
     {
@@ -42,7 +41,6 @@ namespace Lesson17ASPwebMVC.Controllers
         {
             return View(action.SummAllProducts());
         }
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -72,5 +70,6 @@ namespace Lesson17ASPwebMVC.Controllers
             action.DelProduct(id);
             return RedirectToAction("GetAllProduct");
         }
+
     }
 }

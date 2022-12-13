@@ -1,17 +1,21 @@
 ﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+using System.Web.Mvc;
 
 namespace Lesson17ASPwebMVC.CustomFilter
 {
-    public class CustomExceptionFilter : ActionFilterAttribute,
-        IExceptionFilter
+    public class CustomExceptionFilter : FilterAttribute, IExceptionFilter
     {
         public void OnException(ExceptionContext filterContext)
         {
-            if (!filterContext.ExceptionHandled && filterContext.Exception is NullReferenceException)
+            if (!filterContext.ExceptionHandled &&
+                filterContext.Exception is ArgumentOutOfRangeException)
             {
-                filterContext.Result = new RedirectResult("customErrorPage.html");
+                int val = (int)(((ArgumentOutOfRangeException)filterContext.Exception).ActualValue);
+                filterContext.Result = new ViewResult
+                {
+                    ViewName = "customErrorPage",
+                    ViewData = new ViewDataDictionary<int>(val)
+                };
                 filterContext.ExceptionHandled = true;
             }
         }
