@@ -1,4 +1,5 @@
-﻿using Lesson17ASPwebMVC.Models.Domain;
+﻿using System;
+using Lesson17ASPwebMVC.Models.Domain;
 using Lesson17ASPwebMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,6 +51,7 @@ namespace Lesson17ASPwebMVC.Controllers
         public IActionResult Create(Product product)
         {
             action.AddProduct(product);
+            
             return RedirectToAction("GetAllProduct");
         }
 
@@ -59,7 +61,7 @@ namespace Lesson17ASPwebMVC.Controllers
             return View(modelToUpdate);
         }
         [HttpPost]
-        public IActionResult EditPost(Product id)
+        public IActionResult Edit(Product id)
         {
             action.ReplaceProduct(id);
             return RedirectToAction("GetAllProduct");

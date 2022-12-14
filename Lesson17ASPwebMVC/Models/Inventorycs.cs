@@ -1,6 +1,9 @@
 ﻿using Lesson17ASPwebMVC.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
+using System.Text;
 using System.Text.Json;
 
 namespace Lesson17ASPwebMVC.Models
@@ -13,6 +16,7 @@ namespace Lesson17ASPwebMVC.Models
         {
             string jsonString = File.ReadAllText(jsonFile);
             products = JsonSerializer.Deserialize<List<Product>>(jsonString);
+
         }
 
     }

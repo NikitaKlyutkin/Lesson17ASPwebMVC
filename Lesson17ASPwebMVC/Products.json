@@ -1,15 +1,18 @@
 [
     {
+        "Id": "3bbe9f60-3b14-4969-ba5f-e2a8671bbb06",
         "_name": "Apple",
         "_quantity": 4,
         "_price": 5
     },
     {
+        "Id": "996d5bd8-bb37-40d4-8188-3c769af553e6",
         "_name": "Mac",
         "_quantity": 5,
         "_price": 500
     },
     {
+        "Id": "f173ec56-49a8-4af4-b10a-cdb65a2fe68b",
         "_name": "Сleaner",
         "_quantity": 7,
         "_price": 50
