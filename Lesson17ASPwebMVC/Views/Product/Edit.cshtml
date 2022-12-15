@@ -16,8 +16,8 @@
 		    </div>
 	    <div class="form-group">
 				<label asp-for="Id" class="control-label" hidden="text"></label>
-		    <input asp-for="Id" class="form-control" hidden="text" />
-				<span asp-validation-for="_name" class="text-danger" hidden="text"></span>
+		        <input asp-for="Id" class="form-control" hidden="text" />
+				<span asp-validation-for="Id" class="text-danger" hidden="text"></span>
 	    </div>
 		    
 		    <div class="form-group">
@@ -43,6 +43,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="GetAllProduct">Back to List</a>
 </div>
 

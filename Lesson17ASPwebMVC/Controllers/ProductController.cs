@@ -1,4 +1,5 @@
 ﻿using System;
+using Lesson17ASPwebMVC.CustomFilter;
 using Lesson17ASPwebMVC.Models.Domain;
 using Lesson17ASPwebMVC.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ namespace Lesson17ASPwebMVC.Controllers
     [Controller]
     
     [Route("[controller]/[action]")]
+    [CustomExceptionFilter]
     public class ProductController : Controller
     {
         IActionWithProductService action;
@@ -15,20 +17,6 @@ namespace Lesson17ASPwebMVC.Controllers
         {
             this.action = action;
         }
-
-        [HttpPost]
-        public IActionResult AddProduct(Product product)
-        {
-            action.AddProduct(product);
-            return Created($"Name {product._name}", product);
-        }
-
-        //[HttpPut]
-        //public IActionResult ReplaceProduct(Product product)
-        //{
-        //    action.ReplaceProduct(product);
-        //    return Created($"Replace {product._name}", product);
-        //}
 
         [HttpGet]
         public IActionResult GetAllProduct()
@@ -51,6 +39,10 @@ namespace Lesson17ASPwebMVC.Controllers
         public IActionResult Create(Product product)
         {
             action.AddProduct(product);
+            if (product._quantity > 15)
+            {
+	            throw new ArgumentOutOfRangeException();
+            }
             
             return RedirectToAction("GetAllProduct");
         }
@@ -73,5 +65,10 @@ namespace Lesson17ASPwebMVC.Controllers
             return RedirectToAction("GetAllProduct");
         }
 
+        public IActionResult Details(Guid id)
+        {
+	        var modelToUpdate = action.GetProductByName(id);
+	        return View(modelToUpdate);
+        }
     }
 }

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lesson17ASPwebMVC.CustomFilter;
 
 namespace Lesson17ASPwebMVC
 {
@@ -25,12 +26,10 @@ namespace Lesson17ASPwebMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(opts => opts.Filters.Add(typeof(CustomExceptionFilter)));
             services.AddSingleton(new Inventorycs("Products.json"));
             services.AddTransient<IActionWithProductService, ActionWithProductService>();
             services.AddRazorPages();
-            services.AddControllers();
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

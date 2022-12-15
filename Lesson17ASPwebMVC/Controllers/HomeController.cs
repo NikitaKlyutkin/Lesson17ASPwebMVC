@@ -39,17 +39,5 @@ namespace Lesson17ASPwebMVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
-        [CustomExceptionFilter]
-        public void QuantityTest()
-        {
-            foreach (var product in _inventory.products)
-            {
-                if (product._quantity > 15)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
     }
 }

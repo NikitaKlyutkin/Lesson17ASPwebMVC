@@ -44,7 +44,7 @@ namespace Lesson17ASPwebMVC.Services
 
         public void ReplaceProduct(Product product)
         {
-            int idProduct = _inventory.products.FindIndex(x => x.Id == product.Id);
+            var idProduct = _inventory.products.FindIndex(x => x.Id == product.Id);
             _inventory.products[idProduct] = product;
         }
 
