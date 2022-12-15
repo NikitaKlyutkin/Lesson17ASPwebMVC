@@ -23,12 +23,12 @@ namespace Lesson17ASPwebMVC.Controllers
             return Created($"Name {product._name}", product);
         }
 
-        [HttpPut]
-        public IActionResult ReplaceProduct(Product product)
-        {
-            action.ReplaceProduct(product);
-            return Created($"Replace {product._name}", product);
-        }
+        //[HttpPut]
+        //public IActionResult ReplaceProduct(Product product)
+        //{
+        //    action.ReplaceProduct(product);
+        //    return Created($"Replace {product._name}", product);
+        //}
 
         [HttpGet]
         public IActionResult GetAllProduct()
@@ -55,15 +55,15 @@ namespace Lesson17ASPwebMVC.Controllers
             return RedirectToAction("GetAllProduct");
         }
 
-        public IActionResult Edit(string id)
+        public IActionResult Edit(Guid id)
         {
             var modelToUpdate= action.GetProductByName(id);
             return View(modelToUpdate);
         }
         [HttpPost]
-        public IActionResult Edit(Product id)
+        public IActionResult Edit(Product product)
         {
-            action.ReplaceProduct(id);
+            action.ReplaceProduct(product);
             return RedirectToAction("GetAllProduct");
         }
 

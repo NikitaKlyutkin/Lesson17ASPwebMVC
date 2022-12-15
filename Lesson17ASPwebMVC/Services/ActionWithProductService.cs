@@ -12,7 +12,6 @@ namespace Lesson17ASPwebMVC.Services
     public class ActionWithProductService : IActionWithProductService
     {
         private readonly Inventorycs _inventory;
-        public List<ProductDTO> listDto = new List<ProductDTO>();
         public ActionWithProductService(Inventorycs inventory)
         {
             _inventory = inventory;
@@ -34,29 +33,18 @@ namespace Lesson17ASPwebMVC.Services
 
         public List<Product> GetAllProducts()
         {
-            foreach (var product in _inventory.products)
-            {
-                listDto.Add(new ProductDTO()
-                    {
-                    _name = product._name,
-                    _price = product._price,
-                    _quantity = product._quantity,
-                    IdDTO = product.Id
-                    }
-                    );
-            }
             return _inventory.products;
             
         }
 
-        public Product GetProductByName(string name)
+        public Product GetProductByName(Guid id)
         {
-           return _inventory.products.Single(x => x._name == name);
+           return _inventory.products.Single(x => x.Id == id);
         }
 
         public void ReplaceProduct(Product product)
         {
-            int idProduct = _inventory.products.FindIndex(x => x._name == product._name);
+            int idProduct = _inventory.products.FindIndex(x => x.Id == product.Id);
             _inventory.products[idProduct] = product;
         }
 

@@ -13,7 +13,7 @@ namespace Lesson17ASPwebMVC.Models.Domain
 
         public Product() { }
 
-        public Product(Guid id, string name, int quantity, decimal price)
+        public Product(Guid id,string name, int quantity, decimal price)
         {
             Id = id;
             _name = name;

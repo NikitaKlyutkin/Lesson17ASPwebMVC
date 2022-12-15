@@ -11,7 +11,7 @@ namespace Lesson17ASPwebMVC.Services
         public void DelProduct(string name);
 
         public List<Product> GetAllProducts();
-        public Product GetProductByName(string name);
+        public Product GetProductByName(Guid id);
 
         public void ReplaceProduct(Product product);
         public decimal SummAllProducts();
