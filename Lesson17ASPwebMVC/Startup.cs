@@ -29,7 +29,7 @@ namespace Lesson17ASPwebMVC
             services.AddControllersWithViews(opts => opts.Filters.Add(typeof(CustomExceptionFilter)));
             services.AddSingleton(new Inventorycs("Products.json"));
             services.AddTransient<IActionWithProductService, ActionWithProductService>();
-            services.AddRazorPages();
+            //services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
